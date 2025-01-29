@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:ai-aggregator-fe": "node dist/ai-aggregator-fe/server/server.mjs",
-    "heroku-postbuild": "ng build"
+    "heroku-postbuild": "ng build --prod"
   },
   "engines": {
     "node": "v22.13.0",
