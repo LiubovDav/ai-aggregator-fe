@@ -10,10 +10,6 @@
     "serve:ssr:ai-aggregator-fe": "node dist/ai-aggregator-fe/server/server.mjs",
     "heroku-postbuild": "ng build --configuration production"
   },
-  "engines": {
-    "node": "v22.13.0",
-    "npm": "10.9.2"
-  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.1.3",
