@@ -161,13 +161,22 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<main>
+<!-- <main> -->
   <header>
     <app-menubar></app-menubar>
   </header>
   <section>
-    <app-user-list></app-user-list>
+    <app-chat-model></app-chat-model>
+    <mat-divider></mat-divider>
   </section>
-</main>
+  <section>
+    <app-user-list></app-user-list>
+    <mat-divider></mat-divider>
+  </section>
+  <section>
+    <app-user-create></app-user-create>
+  </section>
+  <!-- <mat-divider [vertical]="true"></mat-divider> -->
+<!-- </main> -->
 
 <router-outlet />
