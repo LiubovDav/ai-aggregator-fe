@@ -13,6 +13,24 @@ export class UserService {
   getUsers() {
     return this.http.get<User[]>(this.apiUrl);
   }
+
+  createUser() {
+    // todo: use the data from the inputs
+    const data = { userId: 0, email: 'nick@gmail.com', password: 'jhhjahdjasj',
+      password2: 'jhhjahdjasj', name: 'Nick', createdOn: '', updatedOn: '' };
+
+    this.http.post(this.apiUrl, data).subscribe({
+      next: (response) => {
+        // Handle the successful response here
+        console.log('Success:', response);
+      },
+      error: (error) => {
+        // Handle any errors here
+        console.error('Error:', error);
+      }
+    });
+  }
+
 }
 
 export interface User {
