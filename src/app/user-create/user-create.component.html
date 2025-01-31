@@ -1,0 +1,17 @@
+<h3>Create user</h3>
+<form [formGroup]="userCreateForm" (submit)="submitApplication()">
+  <label for="email">Email</label>
+  <input id="email" type="text" formControlName="email" />
+  <br /><br />
+  <label for="name">Name</label>
+  <input id="name" type="text" formControlName="name" />
+  <br /><br />
+  <label for="password">Password</label>
+  <input id="password" type="text" formControlName="password" />
+  <br /><br />
+  <label for="password1">Password again</label>
+  <input id="password1" type="text" formControlName="password1" />
+  <br /><br />
+  <button type="submit" class="primary">Save</button>
+  <br /><br /><br /><br /><br /><br /><br />
+</form>
