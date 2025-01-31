@@ -1,0 +1,10 @@
+<h2>Users:</h2>
+<ul>
+  @for (user of users$ | async; track user.userId) {
+  <li>Id: {{ user.userId }}</li>
+  <li>Email: {{ user.email }}</li>
+  <li>Name: {{ user.name }}</li>
+  <li>CreatedOn: {{ user.createdOn }}</li>
+  ------------------------------
+  }
+</ul>
