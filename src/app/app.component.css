@@ -1,7 +1,7 @@
-li {
-  flex-wrap: wrap;
+div ul {
+  list-style-type:none;
 }
 
-ul {
-    list-style-type:none;
+li {
+  flex-wrap: wrap;
 }

@@ -1,17 +1,11 @@
 <app-header></app-header>
 
 <main>
-  <ul id="chat-model">
-    <li>
-      <app-chat-model />
-      <mat-divider />
-      <app-user-list />
-      <mat-divider />
-      <app-user-create />
-    </li>
-  </ul>
-
-  <!-- <mat-divider [vertical]="true" /> -->
+  <div>
+    <ul>
+      <li>
+        <router-outlet />
+      </li>
+    </ul>
+  </div>
 </main>
-
-<router-outlet />

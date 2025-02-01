@@ -6,14 +6,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-chat-model',
+  selector: 'app-image-model',
   imports: [MatInputModule, MatFormFieldModule, MatButtonModule, ReactiveFormsModule, CommonModule],
-  templateUrl: './chat-model.component.html',
-  styleUrl: './chat-model.component.css'
+  templateUrl: './image-model.component.html',
+  styleUrl: './image-model.component.css'
 })
-export class ChatModelComponent {
-  
+export class ImageModelComponent {
+
   submitApplication() {
-    console.log("chatModel form was submitted");
+    console.log("imageModel form was submitted");
   }
 }
