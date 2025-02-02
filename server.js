@@ -1,11 +1,17 @@
 const express = require('express');
 const path = require('path');
+
 const app = express();
 
-app.use(express.static(__dirname + '/dist/ai-aggregator-fe'));
+// Serve the static files from the Angular app
+app.use(express.static(path.join(__dirname, '/dist/ai-aggregator-fe/browser')));
 
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname + '/dist/ai-aggregator-fe/browser/index.html'));
+// Handle all other routes and return the index.html file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/dist/ai-aggregator-fe/browser/index.html'));
 });
 
-app.listen(process.env.PORT || 8080);
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
