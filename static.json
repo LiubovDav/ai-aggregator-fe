@@ -1,0 +1,6 @@
+{
+  "root": "dist/ai-aggregator-fe",
+  "routes": {
+    "/**": "index.html"
+  }
+}
