@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { catchError, map, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,38 +8,41 @@ import { Injectable } from '@angular/core';
 export class UserService {
 
   private apiUrl = 'https://ai-aggregator-c1e46fa70092.herokuapp.com/api/v1/user';
+  // private apiUrl = 'http://localhost:8080/api/v1/user';
 
-  constructor(private http: HttpClient) {}
+  private httpClient = inject(HttpClient);
 
-  getUsers() {
-    return this.http.get<User[]>(this.apiUrl);
+  loadUsers() {
+    return this.fetchUsers(this.apiUrl, "Something went wrong fetching users. Please try again later.");
   }
 
-  createUser() {
-    // todo: use the data from the inputs
-    const data = { userId: 0, email: 'nick@gmail.com', password: 'jhhjahdjasj',
-      password2: 'jhhjahdjasj', name: 'Nick', createdOn: '', updatedOn: '' };
+  private fetchUsers(url: string, errorMessage: string) {
+    return this.httpClient.get<User[]>(url).pipe(
+      map((resData) => resData),
+      catchError((error) => {
+        console.log(error);
+        return throwError(() => new Error(errorMessage));
+      })
+    );
+  }
 
-    this.http.post(this.apiUrl, data).subscribe({
-      next: (response) => {
-        // Handle the successful response here
-        console.log('Success:', response);
-      },
-      error: (error) => {
-        // Handle any errors here
-        console.error('Error:', error);
-      }
+  createUser(user: User) {
+    return this.httpClient.post<User>(this.apiUrl, {
+      email: user.email,
+      password: user.password,
+      password2: user.password2,
+      name: user.name
     });
   }
 
 }
 
 export interface User {
-  userId: number;
+  userId: number | null;
   email: string;
   password: string;
   password2: string;
   name: string;
-  createdOn: string;
-  updatedOn: string;
+  createdOn: string | null;
+  updatedOn: string | null;
 }

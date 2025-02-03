@@ -1,10 +1,46 @@
 <h3>Users</h3>
 <ul>
-  @for (user of users$ | async; track user.userId) {
-  <li>Id: {{ user.userId }}</li>
-  <li>Email: {{ user.email }}</li>
-  <li>Name: {{ user.name }}</li>
-  <li>CreatedOn: {{ user.createdOn }}</li>
-  ------------------------------
+  @if (isFetching() && !error()) {
+    <p class="fallback-text">Fetching users...</p>
   }
+
+  @if (error()) {
+    <p class="fallback-text">{{ error() }}</p>
+  }
+
+  @if (users()) {
+    <table style="border: 1px, solid;">
+      <thead>
+        <tr>
+          <td>Id</td>
+          <td>Email</td>
+          <td>Name</td>
+          <td>CreatedOn</td>
+        </tr>
+      </thead>
+      <tbody>
+      @for (user of users(); track user.userId) {
+        <tr>
+          <td>{{ user.userId }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.createdOn }}</td>
+        </tr>
+      }
+      </tbody>
+    </table>
+    <br /><br />
+
+    <!-- @for (user of users(); track user.userId) {
+      <li>Id: {{ user.userId }}</li>
+      <li>Email: {{ user.email }}</li>
+      <li>Name: {{ user.name }}</li>
+      <li>CreatedOn: {{ user.createdOn }}</li>
+      ------------------------------
+      } -->
+
+  } @else if (users()?.length === 0) {
+    <p class="fallback-text">Unfortunately, no users could be found.</p>
+  }
+
 </ul>

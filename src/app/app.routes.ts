@@ -1,14 +1,22 @@
 import { Routes } from '@angular/router';
+
 import { UserListComponent } from './user-list/user-list.component';
 import { ChatModelComponent } from './chat-model/chat-model.component';
 import { ImageModelComponent } from './image-model/image-model.component';
-import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
+import { UserCreateComponent } from './user-create/user-create.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SignupComponent } from './signup/signup.component';
+import { SignoutComponent } from './signout/signout.component';
+import { SigninComponent } from './signin/signin.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    component: SigninComponent
+  },
+  {
+    path: 'signup',
+    component: SignupComponent
   },
   {
     path: 'chat-model',
@@ -19,11 +27,19 @@ export const routes: Routes = [
     component: ImageModelComponent
   },
   {
-    path: 'profile',
-    component: UserListComponent // todo: create new component
+    path: 'user-list',
+    component: UserListComponent
   },
   {
-    path: 'logout',
-    component: LogoutComponent
+    path: 'user-create',
+    component: UserCreateComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
+  },
+  {
+    path: 'signout',
+    component: SignoutComponent
   }
 ];
