@@ -1,5 +1,5 @@
 <h3>Create user</h3>
-<form [formGroup]="userCreateForm" (submit)="onSubmit()">
+<form [formGroup]="userCreateForm" (ngSubmit)="onSubmit()">
   <label for="email">Email</label>
   <input id="email" type="text" formControlName="email" />
   <br /><br />
