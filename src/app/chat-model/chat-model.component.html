@@ -1,25 +1,31 @@
-<!-- <form class="example-form" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)"> -->
+<form [formGroup]="chatRequestForm" (submit)="onSubmit()">
   <h3>Chat model</h3>
   <mat-form-field class="example-full-width">
     <mat-label>Type a message</mat-label>
     <!-- <textarea matInput placeholder="Ex. Generate the names of 5 most famous pirates."></textarea> -->
-    <textarea matInput></textarea>
+    <textarea matInput formControlName="text"></textarea>
   </mat-form-field>
   <br />
   <button mat-flat-button type="submit">Send</button>
-<!-- </form> -->
-  <br /><br /><br /><br />
-  ChatGPT<br />
-  <mat-form-field class="example-full-width">
-    <textarea matInput></textarea>
-  </mat-form-field>
-  <br />
-  Gemini<br />
-  <mat-form-field class="example-full-width">
-    <textarea matInput></textarea>
-  </mat-form-field>
-  <br />
-  Mistral<br />
-  <mat-form-field class="example-full-width">
-    <textarea matInput></textarea>
-  </mat-form-field>
+</form>
+<br /><br /><br /><br />
+
+ChatGPT<br />
+<mat-form-field class="example-full-width">
+  <textarea matInput>{{ chatResponse()?.textChatGPT }}</textarea>
+</mat-form-field>
+<br />
+Gemini<br />
+<mat-form-field class="example-full-width">
+  <textarea matInput>{{ chatResponse()?.textGemini }}</textarea>
+</mat-form-field>
+<br />
+Mistral<br />
+<mat-form-field class="example-full-width">
+  <textarea matInput>{{ chatResponse()?.textMistral }}</textarea>
+</mat-form-field>
+<br />
+Anthropic<br />
+<mat-form-field class="example-full-width">
+  <textarea matInput>{{ chatResponse()?.textAnthropic }}</textarea>
+</mat-form-field>
