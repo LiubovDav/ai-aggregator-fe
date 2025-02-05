@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
+
+import { User, UserService } from '../services/user-service';
 
 function mustContainQuestionMark(control: AbstractControl) {
   if (control.value.includes('?')) {
@@ -22,6 +24,11 @@ function mustContainQuestionMark(control: AbstractControl) {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SigninComponent {
+
+  user = signal<User | undefined>(undefined);
+
+  private userService = inject(UserService);
+
   form = new FormGroup({
     email: new FormControl('', {
       validators: [Validators.email, Validators.required],
@@ -68,6 +75,22 @@ export class SigninComponent {
     }
 
     console.log(this.form);
+
+    this.user.set(this.userService.validate(this.form.value.email!, this.form.value.password!));
+    if (this.user == null || this.user == undefined) {
+      console.log('INVALID FORM');
+      return;
+    }
+
+    // todo: fix
+    // if (this.user()?.userId) {
+    //   sessionStorage.setItem("USER_ID", this.user()?.userId.toString());
+    // }
+
+    sessionStorage.setItem("USER_ID", "" + this.user()!.userId);
+    sessionStorage.setItem("USER_EMAIL", this.user()!.email);
+    sessionStorage.setItem("USER_NAME", this.user()!.name);
+
     this.router.navigate(['chat-model']);
   }
 }

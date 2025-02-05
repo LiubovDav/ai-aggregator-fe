@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Router } from '@angular/router';
+
+import { UserService } from '../services/user-service';
 
 interface Role {
   value: string;
@@ -33,6 +35,8 @@ function equalValues(controlName1: string, controlName2: string) {
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
+
+  private userService = inject(UserService);
 
   form = new FormGroup({
     email: new FormControl('', {
@@ -95,6 +99,10 @@ export class SignupComponent {
     }
 
     console.log(this.form);
+
+    // todo: fix
+    // this.userService.createUser(this.form.);
+
     this.router.navigate(['chat-model']);
   }
 

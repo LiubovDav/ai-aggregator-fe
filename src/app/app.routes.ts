@@ -6,7 +6,6 @@ import { ImageModelComponent } from './image-model/image-model.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
-import { SignoutComponent } from './signout/signout.component';
 import { SigninComponent } from './signin/signin.component';
 import { ChatStaticGridComponent } from './chat-static-grid/chat-static-grid.component';
 import { ChatDynamicGridComponent } from './chat-dynamic-grid/chat-dynamic-grid.component';
@@ -53,8 +52,4 @@ export const routes: Routes = [
     path: 'profile',
     component: ProfileComponent
   },
-  {
-    path: 'signout',
-    component: SignoutComponent
-  }
 ];

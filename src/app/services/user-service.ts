@@ -35,6 +35,22 @@ export class UserService {
     });
   }
 
+  validate(email: string, password: string) {
+    // todo: implement POST request
+
+    const user: User = {
+      userId: 15,
+      email: "john@gmail.com",
+      password: "",
+      confirmPassword: "",
+      name: "John",
+      createdOn: "",
+      updatedOn: ""
+    };
+
+    return user;
+  }
+
 }
 
 export interface User {
