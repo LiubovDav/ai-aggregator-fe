@@ -9,3 +9,7 @@
 button {
   padding: 0.6rem 1.75rem;
 }
+
+.example-container mat-form-field + mat-form-field {
+  margin-left: 8px;
+}

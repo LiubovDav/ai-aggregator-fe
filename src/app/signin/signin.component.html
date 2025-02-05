@@ -1,9 +1,20 @@
 <h3>Sign In</h3>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="control-row">
-    <div class="control no-margin">
-      <label for="email">Email</label>
-      <input id="email" type="email" formControlName="email" />
+  <div class="control-row" align="center">
+    <div class="example-container">
+      <mat-form-field>
+        <mat-label>Enter your email</mat-label>
+        <input
+          matInput
+          placeholder="pat@example.com"
+          formControlName="email"
+        />
+        <!-- can be used for the input above ^^^ (blur)="updateErrorMessage()"
+        required -->
+        <!-- @if (email.invalid) {
+          <mat-error>{{errorMessage()}}</mat-error>
+        } -->
+      </mat-form-field>
     </div>
 
     <div class="control no-margin">
@@ -12,13 +23,13 @@
     </div>
 
     <button class="button">Sign In</button>
+
+    @if (emailIsInvalid) {
+      <p class="control-error">Please enter a valid email address.</p>
+    }
+
+    @if (passwordIsInvalid) {
+      <p class="control-error">Please enter a valid password (must be at least 6 characters long and contain a question mark).</p>
+    }
   </div>
-
-  @if (emailIsInvalid) {
-    <p class="control-error">Please enter a valid email address.</p>
-  }
-
-  @if (passwordIsInvalid) {
-    <p class="control-error">Please enter a valid password (must be at least 6 characters long and contain a question mark).</p>
-  }
 </form>
