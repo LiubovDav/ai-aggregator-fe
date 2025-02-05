@@ -41,14 +41,14 @@ export const routes: Routes = [
     path: 'image-model',
     component: ImageModelComponent
   },
-  {
-    path: 'user-list',
-    component: UserListComponent
-  },
-  {
-    path: 'user-create',
-    component: UserCreateComponent
-  },
+  // {
+  //   path: 'user-list',
+  //   component: UserListComponent
+  // },
+  // {
+  //   path: 'user-create',
+  //   component: UserCreateComponent
+  // },
   {
     path: 'profile',
     component: ProfileComponent
