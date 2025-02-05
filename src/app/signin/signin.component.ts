@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 function mustContainQuestionMark(control: AbstractControl) {
   if (control.value.includes('?')) {
@@ -25,6 +27,8 @@ export class SigninComponent {
     }),
   });
 
+  constructor(private router: Router) { }
+
   get emailIsInvalid() {
     return (
       this.form.controls.email.touched &&
@@ -46,5 +50,6 @@ export class SigninComponent {
     const enteredEmail = this.form.value.email;
     const enteredPassword = this.form.value.password;
     console.log(enteredEmail, enteredPassword);
+    this.router.navigate(['chat-model']);
   }
 }

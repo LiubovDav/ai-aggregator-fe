@@ -6,28 +6,19 @@ import { inject, Injectable } from '@angular/core';
 })
 export class ChatDialogService {
 
-  private apiUrl = 'https://ai-aggregator-c1e46fa70092.herokuapp.com/api/v1/chat_request';
-  // private apiUrl = 'http://localhost:8080/api/v1/chat_request';
+  private apiUrl = 'https://ai-aggregator-c1e46fa70092.herokuapp.com/api/v1/chat_dialog';
+  // private apiUrl = 'http://localhost:8080/api/v1/chat_dialog';
 
   private httpClient = inject(HttpClient);
 
-  send(chatRequest: ChatRequest) {
-    return this.httpClient.post<ChatResponse>(this.apiUrl, {
-      chatDialogId: chatRequest.chatDialogId,
-      text: chatRequest.text
+  createDialog(userId: number) {
+    return this.httpClient.post<ChatDialog>(this.apiUrl, {
+      userId: userId
     });
   }
 }
 
-export interface ChatRequest {
+export interface ChatDialog {
   chatDialogId: number | null;
-  text: string
-}
-
-export interface ChatResponse {
-  textRequestId: number | null;
-  textChatGPT: string;
-  textGemini: string;
-  textMistral: string;
-  textAnthropic: string
+  userId: number;
 }

@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { SignoutComponent } from './signout/signout.component';
 import { SigninComponent } from './signin/signin.component';
+import { ChatStaticGridComponent } from './chat-static-grid/chat-static-grid.component';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,10 @@ export const routes: Routes = [
   {
     path: 'chat-model',
     component: ChatModelComponent
+  },
+  {
+    path: 'chat-static-grid',
+    component: ChatStaticGridComponent
   },
   {
     path: 'image-model',
