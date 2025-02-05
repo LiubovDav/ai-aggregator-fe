@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -13,6 +13,8 @@ import { AuthService } from '../services/auth-service';
 export class HeaderComponent {
 
   private authService = inject(AuthService);
+
+  // userName = sessionStorage.getItem("USER_NAME");
 
   logout() {
     this.authService.logout();
