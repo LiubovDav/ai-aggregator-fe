@@ -52,23 +52,17 @@
   <div>
     <div class="control-row">
       <div class="control">
-        <label for="first-name">First Name</label>
-        <input
-          type="text"
-          id="first-name"
-          name="first-name"
-          formControlName="firstName"
-        />
+        <mat-form-field>
+          <mat-label>First name</mat-label>
+          <input matInput formControlName="firstName">
+        </mat-form-field>
       </div>
 
       <div class="control">
-        <label for="last-name">Last Name</label>
-        <input
-          type="text"
-          id="last-name"
-          name="last-name"
-          formControlName="lastName"
-        />
+        <mat-form-field>
+          <mat-label>Last name</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
       </div>
     </div>
 
@@ -120,14 +114,14 @@
 
   <div class="control-row">
     <div class="control">
-      <label for="role">What best describes your role?</label>
-      <select id="role" name="role" formControlName="role">
-        <option value="student">Student</option>
-        <option value="teacher">Teacher</option>
-        <option value="employee">Employee</option>
-        <option value="founder">Founder</option>
-        <option value="other">Other</option>
-      </select>
+      <mat-form-field>
+        <mat-label>What best describes your role?</mat-label>
+        <mat-select formControlName="role">
+          @for (role of roles; track role) {
+            <mat-option [value]="role.value">{{role.viewValue}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
     </div>
   </div>
 
@@ -151,10 +145,7 @@
 
   <div class="control-row">
     <div class="control">
-      <input type="checkbox" id="terms-and-conditions" name="terms" formControlName="agree" />
-      <label for="terms-and-conditions">
-        I agree to the terms and conditions
-      </label>
+      <mat-checkbox class="example-margin" formControlName="agree">I agree to the terms and conditions</mat-checkbox>
     </div>
   </div>
 

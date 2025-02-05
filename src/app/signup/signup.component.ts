@@ -4,7 +4,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Router } from '@angular/router';
+
+interface Role {
+  value: string;
+  viewValue: string;
+}
 
 function equalValues(controlName1: string, controlName2: string) {
   return (control: AbstractControl) => {
@@ -21,7 +28,7 @@ function equalValues(controlName1: string, controlName2: string) {
 
 @Component({
   selector: 'app-signup',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, MatSelectModule, MatCheckboxModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
@@ -64,6 +71,14 @@ export class SignupComponent {
   });
 
   hide = signal(true);
+
+  roles: Role[] = [
+    {value: 'student', viewValue: 'Student'},
+    {value: 'teacher', viewValue: 'Teacher'},
+    {value: 'employee', viewValue: 'Employee'},
+    {value: 'founder', viewValue: 'Founder'},
+    {value: 'other', viewValue: 'Other'},
+  ];
 
   constructor(private router: Router) { }
 

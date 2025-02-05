@@ -1,3 +1,11 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+.example-margin {
+  margin: 0 12px;
+}
+
+.control-row {
+  align-items: flex-end;
+}
