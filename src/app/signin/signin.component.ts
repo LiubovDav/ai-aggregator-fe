@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
 
 import { User, UserService } from '../services/user-service';
 
-function mustContainQuestionMark(control: AbstractControl) {
-  if (control.value.includes('?')) {
-    return null;
-  }
+// function mustContainQuestionMark(control: AbstractControl) {
+//   if (control.value.includes('?')) {
+//     return null;
+//   }
 
-  return { doesNotContainQuestionMark: true };
-}
+//   return { doesNotContainQuestionMark: true };
+// }
 
 @Component({
   selector: 'app-signin',
@@ -34,7 +34,7 @@ export class SigninComponent {
       validators: [Validators.email, Validators.required],
     }),
     password: new FormControl('', {
-      validators: [Validators.required, Validators.minLength(6), mustContainQuestionMark],
+      validators: [Validators.required, Validators.minLength(6), /*mustContainQuestionMark*/],
     }),
   });
 
