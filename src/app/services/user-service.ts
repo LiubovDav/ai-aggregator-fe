@@ -30,7 +30,7 @@ export class UserService {
     return this.httpClient.post<User>(this.apiUrl, {
       email: user.email,
       password: user.password,
-      password2: user.password2,
+      confirmPassword: user.confirmPassword,
       name: user.name
     });
   }
@@ -41,7 +41,7 @@ export interface User {
   userId: number | null;
   email: string;
   password: string;
-  password2: string;
+  confirmPassword: string;
   name: string;
   createdOn: string | null;
   updatedOn: string | null;

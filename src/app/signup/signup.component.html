@@ -2,30 +2,48 @@
   <h2>Welcome on board!</h2>
   <p>We just need a little bit of data from you to get you started 🚀</p>
 
-  <div class="control">
-    <label for="email">Email</label>
-    <input id="email" type="email" name="email" formControlName="email" />
+  <div class="example-container">
+    <mat-form-field>
+      <mat-label>Enter your email</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        formControlName="email"
+      />
+    </mat-form-field>
   </div>
 
   <div class="control-row" formGroupName="passwords">
-    <div class="control">
-      <label for="password">Password</label>
-      <input
-        id="password"
-        type="password"
-        name="password"
-        formControlName="password"
-      />
+    <div class="example-container">
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
     </div>
 
-    <div class="control">
-      <label for="confirm-password">Confirm Password</label>
-      <input
-        id="confirm-password"
-        type="password"
-        name="confirm-password"
-        formControlName="confirmPassword"
-      />
+    <div class="example-container">
+      <mat-form-field>
+        <mat-label>Confirm password</mat-label>
+        <input matInput [type]="hide() ? 'password' : 'text'" formControlName="confirmPassword" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
     </div>
   </div>
 

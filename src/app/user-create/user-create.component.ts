@@ -19,7 +19,7 @@ export class UserCreateComponent {
     email: new FormControl(''),
     name: new FormControl(''),
     password: new FormControl(''),
-    password2: new FormControl('')
+    confirmPassword: new FormControl('')
   });
 
   onSubmit() {
@@ -28,7 +28,7 @@ export class UserCreateComponent {
       email: this.form.value.email!,
       name: this.form.value.name!,
       password: this.form.value.password!,
-      password2:this.form.value.password2!,
+      confirmPassword:this.form.value.confirmPassword!,
       createdOn: null,
       updatedOn: null
     };
@@ -47,7 +47,7 @@ export class UserCreateComponent {
       email: new FormControl(''),
       name: new FormControl(''),
       password: new FormControl(''),
-      password2: new FormControl('')
+      confirmPassword: new FormControl('')
     });
   }
 }
