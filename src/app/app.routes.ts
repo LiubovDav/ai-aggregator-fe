@@ -9,6 +9,8 @@ import { SignupComponent } from './signup/signup.component';
 import { SignoutComponent } from './signout/signout.component';
 import { SigninComponent } from './signin/signin.component';
 import { ChatStaticGridComponent } from './chat-static-grid/chat-static-grid.component';
+import { ChatDynamicGridComponent } from './chat-dynamic-grid/chat-dynamic-grid.component';
+import { ChatFlexGridComponent } from './chat-flex-grid/chat-flex-grid.component';
 
 export const routes: Routes = [
   {
@@ -26,6 +28,14 @@ export const routes: Routes = [
   {
     path: 'chat-static-grid',
     component: ChatStaticGridComponent
+  },
+  {
+    path: 'chat-dynamic-grid',
+    component: ChatDynamicGridComponent
+  },
+  {
+    path: 'chat-flex-grid',
+    component: ChatFlexGridComponent
   },
   {
     path: 'image-model',
