@@ -1,6 +1,6 @@
 <h3>Sign In</h3>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <div class="control-row" align="center">
+  <div class="control-row">
     <div class="example-container">
       <mat-form-field>
         <mat-label>Enter your email</mat-label>
@@ -9,20 +9,26 @@
           placeholder="pat@example.com"
           formControlName="email"
         />
-        <!-- can be used for the input above ^^^ (blur)="updateErrorMessage()"
-        required -->
-        <!-- @if (email.invalid) {
-          <mat-error>{{errorMessage()}}</mat-error>
-        } -->
       </mat-form-field>
     </div>
 
-    <div class="control no-margin">
-      <label for="password">Password</label>
-      <input id="password" type="password" formControlName="password" />
+    <div class="example-container">
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
     </div>
 
-    <button class="button">Sign In</button>
+    <button mat-flat-button type="submit">Sign In</button>
 
     @if (emailIsInvalid) {
       <p class="control-error">Please enter a valid email address.</p>

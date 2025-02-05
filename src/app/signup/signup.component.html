@@ -141,10 +141,9 @@
   </div>
 
   <p class="form-actions">
-    <button type="button" class="button button-flat" (click)="onReset()">
-      Reset
-    </button>
-    <button type="submit" class="button">Sign up</button>
+    <button mat-flat-button type="button" (click)="onReset()">Reset</button>
+    <span class="example-spacer"></span>
+    <button mat-flat-button type="submit">Sign up</button>
   </p>
 
   @if (form.touched && form.invalid) {
