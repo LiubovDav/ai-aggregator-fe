@@ -22,3 +22,7 @@ input.example-right-align {
 .example-right-align {
   text-align: right;
 }
+
+.example-spacer {
+  flex: 1 1 auto;
+}

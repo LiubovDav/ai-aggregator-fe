@@ -15,7 +15,7 @@ export class UserCreateComponent {
 
   private userService = inject(UserService);
 
-  userCreateForm = new FormGroup({
+  form = new FormGroup({
     email: new FormControl(''),
     name: new FormControl(''),
     password: new FormControl(''),
@@ -25,10 +25,10 @@ export class UserCreateComponent {
   onSubmit() {
     const user: User = {
       userId: null,
-      email: this.userCreateForm.value.email!,
-      name: this.userCreateForm.value.name!,
-      password: this.userCreateForm.value.password!,
-      password2:this.userCreateForm.value.password2!,
+      email: this.form.value.email!,
+      name: this.form.value.name!,
+      password: this.form.value.password!,
+      password2:this.form.value.password2!,
       createdOn: null,
       updatedOn: null
     };
@@ -43,7 +43,7 @@ export class UserCreateComponent {
       }
     });
 
-    this.userCreateForm = new FormGroup({
+    this.form = new FormGroup({
       email: new FormControl(''),
       name: new FormControl(''),
       password: new FormControl(''),

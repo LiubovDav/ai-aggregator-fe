@@ -57,11 +57,17 @@ export class SigninComponent {
     );
   }
 
+  onSignUp() {
+    this.router.navigate(['signup']);
+  }
+
   onSubmit() {
+    if (this.form.invalid) {
+      console.log('INVALID FORM');
+      return;
+    }
+
     console.log(this.form);
-    const enteredEmail = this.form.value.email;
-    const enteredPassword = this.form.value.password;
-    console.log(enteredEmail, enteredPassword);
     this.router.navigate(['chat-model']);
   }
 }

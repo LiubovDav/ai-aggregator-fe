@@ -21,14 +21,14 @@ export class ChatStaticGridComponent {
 
   private chatInterchangeService = inject(ChatInterchangeService);
 
-  chatRequestForm = new FormGroup({
+  form = new FormGroup({
     text: new FormControl('')
   });
 
   onSubmit() {
     this.chatRequest.set({
       chatDialogId: 15, // todo: implement
-      text: this.chatRequestForm.value.text!
+      text: this.form.value.text!
     });
 
     this.chatInterchangeService.send(this.chatRequest()?.chatDialogId!, this.chatRequest()?.text!).subscribe({

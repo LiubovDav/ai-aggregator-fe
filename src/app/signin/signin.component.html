@@ -29,6 +29,8 @@
     </div>
 
     <button mat-flat-button type="submit">Sign In</button>
+    <span class="example-spacer"></span>
+    <button mat-flat-button type="button" (click)="onSignUp()">Sign Up</button>
 
     @if (emailIsInvalid) {
       <p class="control-error">Please enter a valid email address.</p>
