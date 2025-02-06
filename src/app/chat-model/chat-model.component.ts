@@ -16,6 +16,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 })
 export class ChatModelComponent {
   interchanges = signal<Interchange[] | undefined>(undefined);
+  dialogId = signal(null);
 
   private chatInterchangeService = inject(ChatInterchangeService);
 
@@ -50,6 +51,13 @@ export class ChatModelComponent {
         console.error('Error:', error);
       }
     });
+  }
+
+  startNewDialog() {
+    this.interchanges.set([]);
+    this.form.reset();
+    this.dialogId.set(null);
+    // todo: create new dialog in DB, store dialog Id
   }
 }
 
