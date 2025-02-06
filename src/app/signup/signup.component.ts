@@ -55,34 +55,35 @@ export class SignupComponent {
         validators: [equalValues('password', 'confirmPassword')],
       }
     ),
-    firstName: new FormControl('', { validators: [Validators.required] }),
-    lastName: new FormControl('', { validators: [Validators.required] }),
+    name: new FormControl('', { validators: [Validators.required] }),
+    // firstName: new FormControl('', { validators: [Validators.required] }),
+    // lastName: new FormControl('', { validators: [Validators.required] }),
     // address: new FormGroup({
     //   street: new FormControl('', { validators: [Validators.required] }),
     //   number: new FormControl('', { validators: [Validators.required] }),
     //   postalCode: new FormControl('', { validators: [Validators.required] }),
     //   city: new FormControl('', { validators: [Validators.required] }),
     // }),
-    role: new FormControl<
-      'student' | 'teacher' | 'employee' | 'founder' | 'other'
-    >('student', { validators: [Validators.required] }),
-    source: new FormArray([
-      new FormControl(false),
-      new FormControl(false),
-      new FormControl(false),
-    ]),
-    agree: new FormControl(false, { validators: [Validators.required] }),
+    // role: new FormControl<
+    //   'student' | 'teacher' | 'employee' | 'founder' | 'other'
+    // >('student', { validators: [Validators.required] }),
+    // source: new FormArray([
+    //   new FormControl(false),
+    //   new FormControl(false),
+    //   new FormControl(false),
+    // ]),
+    // agree: new FormControl(false, { validators: [Validators.required] }),
   });
 
   hide = signal(true);
 
-  roles: Role[] = [
-    {value: 'student', viewValue: 'Student'},
-    {value: 'teacher', viewValue: 'Teacher'},
-    {value: 'employee', viewValue: 'Employee'},
-    {value: 'founder', viewValue: 'Founder'},
-    {value: 'other', viewValue: 'Other'},
-  ];
+  // roles: Role[] = [
+  //   {value: 'student', viewValue: 'Student'},
+  //   {value: 'teacher', viewValue: 'Teacher'},
+  //   {value: 'employee', viewValue: 'Employee'},
+  //   {value: 'founder', viewValue: 'Founder'},
+  //   {value: 'other', viewValue: 'Other'},
+  // ];
 
   constructor(private router: Router) { }
 

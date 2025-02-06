@@ -47,11 +47,18 @@
     </div>
   </div>
 
-  <hr />
+  <!-- <hr /> -->
 
   <div>
     <div class="control-row">
       <div class="control">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      </div>
+
+      <!-- <div class="control">
         <mat-form-field>
           <mat-label>First name</mat-label>
           <input matInput formControlName="firstName">
@@ -63,7 +70,7 @@
           <mat-label>Last name</mat-label>
           <input matInput formControlName="lastName">
         </mat-form-field>
-      </div>
+      </div> -->
     </div>
 
     <!-- <fieldset formGroupName="address">
@@ -110,9 +117,9 @@
     </fieldset> -->
   </div>
 
-  <hr />
+  <!-- <hr /> -->
 
-  <div class="control-row">
+  <!-- <div class="control-row">
     <div class="control">
       <mat-form-field>
         <mat-label>What best describes your role?</mat-label>
@@ -123,7 +130,7 @@
         </mat-select>
       </mat-form-field>
     </div>
-  </div>
+  </div> -->
 
   <!-- <fieldset formArrayName="source">
     <legend>How did you find us?</legend>
@@ -143,11 +150,11 @@
     </div>
   </fieldset> -->
 
-  <div class="control-row">
+  <!-- <div class="control-row">
     <div class="control">
       <mat-checkbox class="example-margin" formControlName="agree">I agree to the terms and conditions</mat-checkbox>
     </div>
-  </div>
+  </div> -->
 
   <p class="form-actions">
     <button mat-flat-button type="button" (click)="onReset()">Reset</button>
