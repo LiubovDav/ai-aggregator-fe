@@ -6,6 +6,13 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
+  // todo: use the example
+// // Create item:
+// let myObj = { name: 'Nixon', profession: 'Developer' };
+// sessionStorage.setItem(key, JSON.stringify(myObj));
+// // Read item:
+// let item = JSON.parse(sessionStorage.getItem(key));
+
   constructor(private router: Router) {}
 
   logout() {
@@ -24,4 +31,3 @@ export class AuthService {
     this.router.navigate(['']);
   }
 }
-

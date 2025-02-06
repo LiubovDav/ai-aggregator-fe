@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { catchError, map, throwError } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -36,19 +36,11 @@ export class UserService {
   }
 
   validate(email: string, password: string) {
-    // todo: implement POST request
+    let params = new HttpParams()
+      .set('email', email)
+      .set('password', password);
 
-    const user: User = {
-      userId: 15,
-      email: "john@gmail.com",
-      password: "",
-      confirmPassword: "",
-      name: "John",
-      createdOn: "",
-      updatedOn: ""
-    };
-
-    return user;
+    return this.httpClient.get<User>(this.apiUrl + "/validate", { params });
   }
 
 }

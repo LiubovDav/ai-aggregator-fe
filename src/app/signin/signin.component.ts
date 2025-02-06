@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,10 +24,13 @@ import { User, UserService } from '../services/user-service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SigninComponent {
-
   user = signal<User | undefined>(undefined);
+  isFetching = signal(false);
+  error = signal('');
+  hide = signal(true);
 
   private userService = inject(UserService);
+  private destroyRef = inject(DestroyRef);
 
   form = new FormGroup({
     email: new FormControl('', {
@@ -37,8 +40,6 @@ export class SigninComponent {
       validators: [Validators.required, Validators.minLength(6), /*mustContainQuestionMark*/],
     }),
   });
-
-  hide = signal(true);
 
   constructor(private router: Router) { }
 
@@ -76,20 +77,54 @@ export class SigninComponent {
 
     console.log(this.form);
 
-    this.user.set(this.userService.validate(this.form.value.email!, this.form.value.password!));
-    if (this.user == null || this.user == undefined) {
-      console.log('INVALID FORM');
-      return;
-    }
+    this.isFetching.set(true);
+    const subscription = this.userService.validate(this.form.value.email!, this.form.value.password!).subscribe({
+      next: (user : User) => {
+        // console.log('************************')
+        // console.log(user.userId);
+        // console.log(user.name);
+        // console.log('************************')
+        this.user.set(user);
+      },
+      error: (error: Error) => {
+        this.error.set(error.message);
+      },
+      complete: () => {
+        this.isFetching.set(false);
+      },
+    });
+
+    this.destroyRef.onDestroy(() => {
+      subscription.unsubscribe();
+    });
+
+    // const user: User = {
+    //   userId: 15,
+    //   email: "john@gmail.com",
+    //   password: "",
+    //   confirmPassword: "",
+    //   name: "John",
+    //   createdOn: "",
+    //   updatedOn: ""
+    // };
+
+    // console.log('************************')
+    // console.log(this.user());
+    // console.log('************************')
+
+    // if (this.user() == null || this.user() == undefined) {
+    //   console.log('INVALID FORM');
+    //   return;
+    // }
 
     // todo: fix
     // if (this.user()?.userId) {
     //   sessionStorage.setItem("USER_ID", this.user()?.userId.toString());
     // }
 
-    sessionStorage.setItem("USER_ID", "" + this.user()!.userId);
-    sessionStorage.setItem("USER_EMAIL", this.user()!.email);
-    sessionStorage.setItem("USER_NAME", this.user()!.name);
+    // sessionStorage.setItem("USER_ID", "" + this.user()!.userId);
+    // sessionStorage.setItem("USER_EMAIL", this.user()!.email);
+    // sessionStorage.setItem("USER_NAME", this.user()!.name);
 
     this.router.navigate(['chat-model']);
   }
