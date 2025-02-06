@@ -1,2 +1,19 @@
-<h3>Profile</h3>
-<p>profile works!</p>
+<table>
+  <thead>
+  </thead>
+  <tbody>
+    <tr>
+      <td><h2>Name:</h2></td>
+      <td><h2>{{ user().name }}</h2></td>
+    </tr>
+    <tr>
+      <td><h2>Email:</h2></td>
+      <td><h2>{{ user().email }}</h2></td>
+    </tr>
+  </tbody>
+</table>
+
+<br />
+<br />
+<button mat-flat-button type="button" (click)="updatePassword()">Update password</button>
+

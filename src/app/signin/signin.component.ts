@@ -98,15 +98,15 @@ export class SigninComponent {
       subscription.unsubscribe();
     });
 
-    // const user: User = {
-    //   userId: 15,
-    //   email: "john@gmail.com",
-    //   password: "",
-    //   confirmPassword: "",
-    //   name: "John",
-    //   createdOn: "",
-    //   updatedOn: ""
-    // };
+    const user: User = {
+      userId: 15,
+      email: "john@gmail.com",
+      password: "",
+      confirmPassword: "",
+      name: "John",
+      createdOn: "",
+      updatedOn: ""
+    };
 
     // console.log('************************')
     // console.log(this.user());
