@@ -15,9 +15,7 @@ import { ChatInterchangeService, ChatRequest, ChatResponse } from '../services/c
   styleUrl: './chat-model.component.css'
 })
 export class ChatModelComponent {
-
-  chatRequest = signal<ChatRequest | undefined>(undefined);
-  chatResponse = signal<ChatResponse | undefined>(undefined);
+  interchanges = signal<Interchange[] | undefined>(undefined);
 
   private chatInterchangeService = inject(ChatInterchangeService);
 
@@ -26,19 +24,36 @@ export class ChatModelComponent {
   });
 
   onSubmit() {
-    this.chatRequest.set({
+    const chatRequest : ChatRequest = {
       chatDialogId: 15, // todo: implement
       text: this.form.value.text!
-    });
+    };
 
-    this.chatInterchangeService.send(this.chatRequest()?.chatDialogId!, this.chatRequest()?.text).subscribe({
+    this.chatInterchangeService.send(chatRequest.chatDialogId!, chatRequest.text!).subscribe({
       next: (response : ChatResponse) => {
-        this.chatResponse.set(response);
+        const interchange: Interchange = {
+          chatRequest: chatRequest,
+          chatResponse: response
+        };
+
+        if (this.interchanges()) {
+          this.interchanges.update((currentArray) => [...currentArray!, interchange]);
+        } else {
+          this.interchanges.set([interchange]);
+        }
+
         console.log('Success:', response);
+
+        this.form.reset();
       },
       error: (error: Error) => {
         console.error('Error:', error);
       }
     });
   }
+}
+
+export interface Interchange {
+  chatRequest: ChatRequest;
+  chatResponse: ChatResponse;
 }

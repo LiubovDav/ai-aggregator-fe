@@ -1,31 +1,52 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <h3>Chat model</h3>
-  <mat-form-field class="example-full-width">
-    <mat-label>Type a message</mat-label>
-    <!-- <textarea matInput placeholder="Ex. Generate the names of 5 most famous pirates."></textarea> -->
-    <textarea matInput formControlName="text"></textarea>
-  </mat-form-field>
-  <br />
-  <button mat-flat-button type="submit">Send</button>
-</form>
-<br /><br /><br /><br />
+<mat-grid-list cols="5">
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile>ChatGPT</mat-grid-tile>
+  <mat-grid-tile>Gemini</mat-grid-tile>
+  <mat-grid-tile>Mistral</mat-grid-tile>
+  <mat-grid-tile>Anthropic</mat-grid-tile>
 
-ChatGPT<br />
-<mat-form-field class="example-full-width">
-  <textarea matInput>{{ chatResponse()?.textChatGPT }}</textarea>
-</mat-form-field>
-<br />
-Gemini<br />
-<mat-form-field class="example-full-width">
-  <textarea matInput>{{ chatResponse()?.textGemini }}</textarea>
-</mat-form-field>
-<br />
-Mistral<br />
-<mat-form-field class="example-full-width">
-  <textarea matInput>{{ chatResponse()?.textMistral }}</textarea>
-</mat-form-field>
-<br />
-Anthropic<br />
-<mat-form-field class="example-full-width">
-  <textarea matInput>{{ chatResponse()?.textAnthropic }}</textarea>
-</mat-form-field>
+  @for (interchange of interchanges(); track interchange) {
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <textarea matInput>{{ interchange.chatRequest.text! }}</textarea>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <textarea matInput>{{ interchange.chatResponse.textChatGPT }}</textarea>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <textarea matInput>{{ interchange.chatResponse.textGemini }}</textarea>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <textarea matInput>{{ interchange.chatResponse.textMistral }}</textarea>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="example-full-width">
+        <textarea matInput>{{ interchange.chatResponse.textAnthropic }}</textarea>
+      </mat-form-field>
+    </mat-grid-tile>
+  }
+
+  <mat-grid-tile>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <!-- <h3>Chat model</h3> -->
+      <mat-form-field class="example-full-width">
+        <mat-label>Type a message</mat-label>
+        <!-- <textarea matInput placeholder="Ex. Generate the names of 5 most famous pirates."></textarea> -->
+        <textarea matInput cdkTextareaAutosize formControlName="text"></textarea>
+      </mat-form-field>
+      <br />
+      <button mat-flat-button type="submit">Send</button>
+    </form>
+  </mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+  <mat-grid-tile></mat-grid-tile>
+</mat-grid-list>
