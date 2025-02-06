@@ -4,13 +4,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { MatGridListModule } from '@angular/material/grid-list';
 
 import { ChatInterchangeService, ChatRequest, ChatResponse } from '../services/chat-interchange-service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-chat-model',
-  imports: [MatGridListModule, MatInputModule, MatFormFieldModule, MatButtonModule, ReactiveFormsModule, CommonModule],
+  imports: [MatInputModule, MatFormFieldModule, MatButtonModule, ReactiveFormsModule, CommonModule, MatCheckboxModule],
   templateUrl: './chat-model.component.html',
   styleUrl: './chat-model.component.css'
 })

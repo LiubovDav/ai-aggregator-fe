@@ -1,52 +1,66 @@
-<mat-grid-list cols="5">
-  <mat-grid-tile></mat-grid-tile>
-  <mat-grid-tile>ChatGPT</mat-grid-tile>
-  <mat-grid-tile>Gemini</mat-grid-tile>
-  <mat-grid-tile>Mistral</mat-grid-tile>
-  <mat-grid-tile>Anthropic</mat-grid-tile>
+<div class="container">
+  <div class="item">
+    <mat-checkbox class="example-margin">ChatGPT</mat-checkbox><br />
+    <mat-checkbox class="example-margin">Gemini</mat-checkbox><br />
+    <mat-checkbox class="example-margin">Mistral</mat-checkbox><br />
+    <mat-checkbox class="example-margin">Anthropic</mat-checkbox>
+  </div>
+  <div class="item">ChatGPT</div>
+  <div class="item">Gemini</div>
+  <div class="item">Mistral</div>
+  <div class="item">Anthropic</div>
+</div>
 
+<div class="container">
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+</div>
+
+<div class="container">
   @for (interchange of interchanges(); track interchange) {
-    <mat-grid-tile>
+    <div class="item">
       <mat-form-field class="example-full-width">
         <textarea matInput>{{ interchange.chatRequest.text! }}</textarea>
       </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile>
+    </div>
+    <div class="item">
       <mat-form-field class="example-full-width">
         <textarea matInput>{{ interchange.chatResponse.textChatGPT }}</textarea>
       </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile>
+    </div>
+    <div class="item">
       <mat-form-field class="example-full-width">
         <textarea matInput>{{ interchange.chatResponse.textGemini }}</textarea>
       </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile>
+    </div>
+    <div class="item">
       <mat-form-field class="example-full-width">
         <textarea matInput>{{ interchange.chatResponse.textMistral }}</textarea>
       </mat-form-field>
-    </mat-grid-tile>
-    <mat-grid-tile>
+    </div>
+    <div class="item">
       <mat-form-field class="example-full-width">
         <textarea matInput>{{ interchange.chatResponse.textAnthropic }}</textarea>
       </mat-form-field>
-    </mat-grid-tile>
+    </div>
   }
 
-  <mat-grid-tile>
+  <div class="item">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <!-- <h3>Chat model</h3> -->
       <mat-form-field class="example-full-width">
         <mat-label>Type a message</mat-label>
         <!-- <textarea matInput placeholder="Ex. Generate the names of 5 most famous pirates."></textarea> -->
-        <textarea matInput cdkTextareaAutosize formControlName="text"></textarea>
+        <textarea matInput formControlName="text"></textarea>
       </mat-form-field>
       <br />
       <button mat-flat-button type="submit">Send</button>
     </form>
-  </mat-grid-tile>
-  <mat-grid-tile></mat-grid-tile>
-  <mat-grid-tile></mat-grid-tile>
-  <mat-grid-tile></mat-grid-tile>
-  <mat-grid-tile></mat-grid-tile>
-</mat-grid-list>
+  </div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+  <div class="item"></div>
+</div>

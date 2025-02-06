@@ -1,18 +1,19 @@
-.example-form {
-  min-width: 100px;
-  max-width: 500px;
+.example-full-width {
   width: 100%;
 }
 
-.example-full-width {
-  width: 500px;
-  /* width: 100%; */
+.container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.example-spacer {
-  flex: 1 1 auto;
+.item {
+  flex-grow: 1;
+  flex-basis: 335px;
+  margin: 10px;
 }
 
-mat-grid-tile {
-  background: lightblue;
+textarea {
+  field-sizing: content;
+  height: auto;
 }

@@ -7,7 +7,6 @@ import { UserCreateComponent } from './user-create/user-create.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
-import { ChatFlexGridComponent } from './chat-flex-grid/chat-flex-grid.component';
 
 export const routes: Routes = [
   {
@@ -21,10 +20,6 @@ export const routes: Routes = [
   {
     path: 'chat-model',
     component: ChatModelComponent
-  },
-  {
-    path: 'chat-flex-grid',
-    component: ChatFlexGridComponent
   },
   {
     path: 'image-model',
