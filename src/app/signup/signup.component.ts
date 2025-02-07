@@ -104,7 +104,7 @@ export class SignupComponent {
     // todo: fix
     // this.userService.createUser(this.form.);
 
-    this.router.navigate(['chat-model']);
+    this.router.navigate(['']);
   }
 
   onReset() {
