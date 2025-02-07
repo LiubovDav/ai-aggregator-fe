@@ -80,10 +80,10 @@ export class SigninComponent {
     this.isFetching.set(true);
     const subscription = this.userService.validate(this.form.value.email!, this.form.value.password!).subscribe({
       next: (user : User) => {
-        // console.log('************************')
-        // console.log(user.userId);
-        // console.log(user.name);
-        // console.log('************************')
+        console.log('************************')
+        console.log(user.userId);
+        console.log(user.name);
+        console.log('************************')
         this.user.set(user);
       },
       error: (error: Error) => {
@@ -101,8 +101,8 @@ export class SigninComponent {
     const user: User = {
       userId: 1,
       email: "john@gmail.com",
-      password: "",
-      confirmPassword: "",
+      password: "111111",
+      confirmPassword: "111111",
       name: "John",
       createdOn: "",
       updatedOn: ""

@@ -11,10 +11,10 @@ import { MatButtonModule } from '@angular/material/button';
 export class ProfileComponent {
 
   user = signal<User>({
-    userId: 15,
+    userId: 1,
     email: "john@gmail.com",
-    password: "",
-    confirmPassword: "",
+    password: "111111",
+    confirmPassword: "111111",
     name: "John",
     createdOn: "",
     updatedOn: ""

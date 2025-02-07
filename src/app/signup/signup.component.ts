@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -35,8 +35,12 @@ function equalValues(controlName1: string, controlName2: string) {
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
+  user = signal<User | undefined>(undefined);
+  isFetching = signal(false);
+  error = signal('');
 
   private userService = inject(UserService);
+  private destroyRef = inject(DestroyRef);
 
   form = new FormGroup({
     email: new FormControl('', {
@@ -101,7 +105,7 @@ export class SignupComponent {
 
     console.log(this.form);
 
-    const user : User = {
+    const myUser : User = {
       userId: null,
       email: this.form.value.email!,
       password: this.form.value.passwords?.password!,
@@ -111,7 +115,34 @@ export class SignupComponent {
       updatedOn: null
     };
 
-    this.userService.createUser(user).subscribe();
+    // this.userService.createUser(user).subscribe().;
+
+    console.log('**************1***********');
+
+    this.isFetching.set(true);
+    const subscription = this.userService.createUser(myUser).subscribe({
+      next: (user : User) => {
+        console.log('************2************')
+        console.log(user.userId);
+        console.log(user.name);
+        console.log('*************3***********')
+        this.user.set(user);
+      },
+      error: (error: Error) => {
+        this.error.set(error.message);
+      },
+      complete: () => {
+        this.isFetching.set(false);
+      },
+    });
+
+    console.log('*************4************');
+
+    this.destroyRef.onDestroy(() => {
+      subscription.unsubscribe();
+    });
+
+    console.log('*************5************');
 
     this.router.navigate(['']);
   }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 
 @Injectable({
@@ -12,9 +12,10 @@ export class ChatDialogService {
   private httpClient = inject(HttpClient);
 
   createDialog(userId: number) {
-    return this.httpClient.post<ChatDialog>(this.apiUrl, {
-      userId: userId
-    });
+    let params = new HttpParams()
+      .set('userId', userId);
+
+    return this.httpClient.post<ChatDialog>(this.apiUrl, { params });
   }
 }
 
