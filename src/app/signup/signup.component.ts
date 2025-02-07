@@ -8,7 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Router } from '@angular/router';
 
-import { UserService } from '../services/user-service';
+import { User, UserService } from '../services/user-service';
 
 interface Role {
   value: string;
@@ -101,8 +101,17 @@ export class SignupComponent {
 
     console.log(this.form);
 
-    // todo: fix
-    // this.userService.createUser(this.form.);
+    const user : User = {
+      userId: null,
+      email: this.form.value.email!,
+      password: this.form.value.passwords?.password!,
+      confirmPassword: this.form.value.passwords?.confirmPassword!,
+      name: this.form.value.name!,
+      createdOn: null,
+      updatedOn: null
+    };
+
+    this.userService.createUser(user).subscribe();
 
     this.router.navigate(['']);
   }
