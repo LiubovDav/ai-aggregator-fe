@@ -99,7 +99,7 @@ export class SigninComponent {
     });
 
     const user: User = {
-      userId: 15,
+      userId: 1,
       email: "john@gmail.com",
       password: "",
       confirmPassword: "",
@@ -119,12 +119,12 @@ export class SigninComponent {
 
     // todo: fix
     // if (this.user()?.userId) {
-    //   sessionStorage.setItem("USER_ID", this.user()?.userId.toString());
+    //   localStorage.setItem("USER_ID", this.user()?.userId.toString());
     // }
 
-    // sessionStorage.setItem("USER_ID", "" + this.user()!.userId);
-    // sessionStorage.setItem("USER_EMAIL", this.user()!.email);
-    // sessionStorage.setItem("USER_NAME", this.user()!.name);
+    // localStorage.setItem("USER_ID", "" + this.user()!.userId);
+    // localStorage.setItem("USER_EMAIL", this.user()!.email);
+    // localStorage.setItem("USER_NAME", this.user()!.name);
 
     this.router.navigate(['chat-model']);
   }

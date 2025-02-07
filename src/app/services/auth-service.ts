@@ -9,24 +9,24 @@ export class AuthService {
   // todo: use the example
 // // Create item:
 // let myObj = { name: 'Nixon', profession: 'Developer' };
-// sessionStorage.setItem(key, JSON.stringify(myObj));
+// localStorage.setItem(key, JSON.stringify(myObj));
 // // Read item:
-// let item = JSON.parse(sessionStorage.getItem(key));
+// let item = JSON.parse(localStorage.getItem(key));
 
   constructor(private router: Router) {}
 
   logout() {
-    // console.log(sessionStorage.getItem("USER_ID"));
-    // console.log(sessionStorage.getItem("USER_EMAIL"));
-    // console.log(sessionStorage.getItem("USER_NAME"));
+    // console.log(localStorage.getItem("USER_ID"));
+    // console.log(localStorage.getItem("USER_EMAIL"));
+    // console.log(localStorage.getItem("USER_NAME"));
 
-    sessionStorage.removeItem("USER_ID");
-    sessionStorage.removeItem("USER_EMAIL");
-    sessionStorage.removeItem("USER_NAME");
+    localStorage.removeItem("USER_ID");
+    localStorage.removeItem("USER_EMAIL");
+    localStorage.removeItem("USER_NAME");
 
-    // console.log(sessionStorage.getItem("USER_ID"));
-    // console.log(sessionStorage.getItem("USER_EMAIL"));
-    // console.log(sessionStorage.getItem("USER_NAME"));
+    // console.log(localStorage.getItem("USER_ID"));
+    // console.log(localStorage.getItem("USER_EMAIL"));
+    // console.log(localStorage.getItem("USER_NAME"));
 
     this.router.navigate(['']);
   }

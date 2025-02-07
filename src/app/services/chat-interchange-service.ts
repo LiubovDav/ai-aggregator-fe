@@ -18,7 +18,7 @@ export class ChatInterchangeService {
   //   });
   // }
 
-  send(chatDialogId?: number, text?: string) {
+  send(chatDialogId: number, text?: string) {
     return this.httpClient.post<ChatResponse>(this.apiUrl, {
       chatDialogId: chatDialogId,
       text: text
@@ -27,7 +27,7 @@ export class ChatInterchangeService {
 }
 
 export interface ChatRequest {
-  chatDialogId: number | null;
+  chatDialogId: number;
   text: string
 }
 

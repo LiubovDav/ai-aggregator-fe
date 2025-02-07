@@ -26,7 +26,7 @@ export class ChatModelComponent {
 
   onSubmit() {
     const chatRequest : ChatRequest = {
-      chatDialogId: 15, // todo: implement
+      chatDialogId: 1, // todo: implement
       text: this.form.value.text!
     };
 

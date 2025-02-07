@@ -14,7 +14,7 @@ export class HeaderComponent {
 
   private authService = inject(AuthService);
 
-  // userName = sessionStorage.getItem("USER_NAME");
+  // userName = localStorage.getItem("USER_NAME");
 
   logout() {
     this.authService.logout();
