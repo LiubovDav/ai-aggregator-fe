@@ -37,7 +37,6 @@ function equalValues(controlName1: string, controlName2: string) {
 })
 export class SignupComponent {
   user = signal<User | undefined>(undefined);
-  isFetching = signal(false);
   error = signal('');
 
   private userService = inject(UserService);
@@ -120,7 +119,6 @@ export class SignupComponent {
 
     console.log('**************1***********');
 
-    this.isFetching.set(true);
     const subscription = this.userService.createUser(myUser).subscribe({
       next: (user : User) => {
         console.log('************2************')
@@ -131,10 +129,7 @@ export class SignupComponent {
       },
       error: (error: Error) => {
         this.error.set(error.message);
-      },
-      complete: () => {
-        this.isFetching.set(false);
-      },
+      }
     });
 
     console.log('*************4************');

@@ -1,9 +1,5 @@
 <h3>Users</h3>
 <ul>
-  @if (isFetching() && !error()) {
-    <p class="fallback-text">Fetching users...</p>
-  }
-
   @if (error()) {
     <p class="fallback-text">{{ error() }}</p>
   }

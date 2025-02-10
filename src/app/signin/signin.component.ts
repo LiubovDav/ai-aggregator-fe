@@ -26,7 +26,6 @@ import { User } from '../models/user.model';
 })
 export class SigninComponent {
   user = signal<User | undefined>(undefined);
-  isFetching = signal(false);
   error = signal('');
   hide = signal(true);
 
@@ -78,7 +77,6 @@ export class SigninComponent {
 
     console.log(this.form);
 
-    this.isFetching.set(true);
     const subscription = this.userService.validate(this.form.value.email!, this.form.value.password!).subscribe({
       next: (user : User) => {
         console.log('************************')
@@ -89,43 +87,24 @@ export class SigninComponent {
       },
       error: (error: Error) => {
         this.error.set(error.message);
-      },
-      complete: () => {
-        this.isFetching.set(false);
-      },
+      }
     });
 
     this.destroyRef.onDestroy(() => {
       subscription.unsubscribe();
     });
 
-    const user: User = {
-      userId: 1,
-      email: "john@gmail.com",
-      password: "111111",
-      confirmPassword: "111111",
-      name: "John",
-      createdOn: "",
-      updatedOn: ""
-    };
+    const user = this.user();
+    if (user == null) {
+      console.log('INVALID FORM');
+      return;
+    }
 
-    // console.log('************************')
-    // console.log(this.user());
-    // console.log('************************')
-
-    // if (this.user() == null || this.user() == undefined) {
-    //   console.log('INVALID FORM');
-    //   return;
-    // }
-
-    // todo: fix
-    // if (this.user()?.userId) {
-    //   localStorage.setItem("USER_ID", this.user()?.userId.toString());
-    // }
-
-    // localStorage.setItem("USER_ID", "" + this.user()!.userId);
-    // localStorage.setItem("USER_EMAIL", this.user()!.email);
-    // localStorage.setItem("USER_NAME", this.user()!.name);
+    if (user.userId) {
+      localStorage.setItem("USER_ID", user.userId.toString());
+      localStorage.setItem("USER_EMAIL", user.email);
+      localStorage.setItem("USER_NAME", user.name);
+    }
 
     this.router.navigate(['chat-model']);
   }

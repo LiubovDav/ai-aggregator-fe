@@ -11,24 +11,19 @@ import { User } from '../models/user.model';
 })
 export class UserListComponent implements OnInit {
   users = signal<User[] | undefined>(undefined);
-  isFetching = signal(false);
   error = signal('');
 
   private userService = inject(UserService);
   private destroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
-    this.isFetching.set(true);
     const subscription = this.userService.loadUsers().subscribe({
       next: (users) => {
         this.users.set(users);
       },
       error: (error: Error) => {
         this.error.set(error.message);
-      },
-      complete: () => {
-        this.isFetching.set(false);
-      },
+      }
     });
 
     this.destroyRef.onDestroy(() => {
