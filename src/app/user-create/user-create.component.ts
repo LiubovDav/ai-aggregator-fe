@@ -2,7 +2,8 @@ import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
-import { User, UserService } from '../services/user-service';
+import { UserService } from '../services/user-service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-user-create',

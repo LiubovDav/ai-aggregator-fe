@@ -1,6 +1,7 @@
 import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 
-import { User, UserService } from '../services/user-service';
+import { UserService } from '../services/user-service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-user-list',

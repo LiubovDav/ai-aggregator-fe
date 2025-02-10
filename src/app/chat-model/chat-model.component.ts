@@ -5,8 +5,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
-import { ChatInterchangeService, ChatRequest, ChatResponse } from '../services/chat-interchange-service';
+import { ChatInterchangeService } from '../services/chat-interchange-service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ChatRequest } from '../models/chat-request.model';
+import { ChatResponse } from '../models/chat-response.model';
+import { ChatInterchange } from '../models/chat-interchange.model';
 
 @Component({
   selector: 'app-chat-model',
@@ -15,7 +18,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   styleUrl: './chat-model.component.css'
 })
 export class ChatModelComponent {
-  interchanges = signal<Interchange[] | undefined>(undefined);
+  interchanges = signal<ChatInterchange[] | undefined>(undefined);
   dialogId = signal(null);
 
   private chatInterchangeService = inject(ChatInterchangeService);
@@ -32,15 +35,15 @@ export class ChatModelComponent {
 
     this.chatInterchangeService.send(chatRequest.chatDialogId!, chatRequest.text!).subscribe({
       next: (response : ChatResponse) => {
-        const interchange: Interchange = {
+        const chatInterchange: ChatInterchange = {
           chatRequest: chatRequest,
           chatResponse: response
         };
 
         if (this.interchanges()) {
-          this.interchanges.update((currentArray) => [...currentArray!, interchange]);
+          this.interchanges.update((currentArray) => [...currentArray!, chatInterchange]);
         } else {
-          this.interchanges.set([interchange]);
+          this.interchanges.set([chatInterchange]);
         }
 
         console.log('Success:', response);
@@ -59,9 +62,4 @@ export class ChatModelComponent {
     this.dialogId.set(null);
     // todo: create new dialog in DB, store dialog Id
   }
-}
-
-export interface Interchange {
-  chatRequest: ChatRequest;
-  chatResponse: ChatResponse;
 }

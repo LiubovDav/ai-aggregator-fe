@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ChatResponse } from '../models/chat-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,30 +13,10 @@ export class ChatInterchangeService {
 
   private httpClient = inject(HttpClient);
 
-  // send(chatRequest: ChatRequest) {
-  //   return this.httpClient.post<ChatResponse>(this.apiUrl, {
-  //     chatDialogId: chatRequest.chatDialogId,
-  //     text: chatRequest.text
-  //   });
-  // }
-
-  send(chatDialogId: number, text?: string) {
+  send(chatDialogId: number, text?: string): Observable<ChatResponse> {
     return this.httpClient.post<ChatResponse>(this.apiUrl, {
       chatDialogId: chatDialogId,
       text: text
     });
   }
-}
-
-export interface ChatRequest {
-  chatDialogId: number;
-  text: string
-}
-
-export interface ChatResponse {
-  textRequestId: number | null;
-  textChatGPT: string;
-  textGemini: string;
-  textMistral: string;
-  textAnthropic: string
 }

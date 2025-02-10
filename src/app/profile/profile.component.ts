@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { User } from '../services/user-service';
 import { MatButtonModule } from '@angular/material/button';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-profile',

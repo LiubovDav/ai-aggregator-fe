@@ -1,5 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ChatDialog } from '../models/chat-dialog.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +13,10 @@ export class ChatDialogService {
 
   private httpClient = inject(HttpClient);
 
-  createDialog(userId: number) {
+  createDialog(userId: number): Observable<ChatDialog> {
     let params = new HttpParams()
       .set('userId', userId);
 
     return this.httpClient.post<ChatDialog>(this.apiUrl, { params });
   }
-}
-
-export interface ChatDialog {
-  chatDialogId: number | null;
-  userId: number;
 }

@@ -6,7 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 
-import { User, UserService } from '../services/user-service';
+import { UserService } from '../services/user-service';
+import { User } from '../models/user.model';
 
 // function mustContainQuestionMark(control: AbstractControl) {
 //   if (control.value.includes('?')) {

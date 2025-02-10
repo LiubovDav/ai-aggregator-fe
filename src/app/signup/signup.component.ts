@@ -8,7 +8,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Router } from '@angular/router';
 
-import { User, UserService } from '../services/user-service';
+import { UserService } from '../services/user-service';
+import { User } from '../models/user.model';
 
 interface Role {
   value: string;
