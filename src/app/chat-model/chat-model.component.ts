@@ -4,16 +4,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { ChatInterchangeService } from '../services/chat-interchange-service';
-import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ChatRequest } from '../models/chat-request.model';
 import { ChatResponse } from '../models/chat-response.model';
 import { ChatInterchange } from '../models/chat-interchange.model';
 
 @Component({
   selector: 'app-chat-model',
-  imports: [MatInputModule, MatFormFieldModule, MatButtonModule, ReactiveFormsModule, CommonModule, MatCheckboxModule],
+  imports: [MatInputModule, MatFormFieldModule, MatButtonModule, ReactiveFormsModule, CommonModule, MatCheckboxModule, MatSliderModule],
   templateUrl: './chat-model.component.html',
   styleUrl: './chat-model.component.css'
 })
@@ -24,12 +25,14 @@ export class ChatModelComponent {
   private chatInterchangeService = inject(ChatInterchangeService);
 
   form = new FormGroup({
+    temperature: new FormControl(0.4),
     text: new FormControl('')
   });
 
   onSubmit() {
     const chatRequest : ChatRequest = {
       chatDialogId: 1, // todo: implement
+      temperature: this.form.value.temperature!,
       text: this.form.value.text!
     };
 

@@ -1,4 +1,5 @@
 export interface ChatRequest {
   chatDialogId: number;
-  text: string
+  temperature: number;
+  text: string;
 }

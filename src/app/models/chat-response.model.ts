@@ -3,5 +3,5 @@ export interface ChatResponse {
   textChatGPT: string;
   textGemini: string;
   textMistral: string;
-  textAnthropic: string
+  textAnthropic: string;
 }
