@@ -1,0 +1,31 @@
+
+h2 {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: left;
+  text-shadow: 2px 2px rgb(77, 80, 226);
+  font-size: 30px;
+}
+ul {
+    /* list-style: none; */
+    line-height: 25pt;
+    text-align:justify;
+    font-size: 20px;
+ }
+
+ /* #facts_plants {
+  list-style: none;
+  line-height: 25pt;
+  text-align:justify;
+} */
+
+/* li {
+  width: 95%;
+  flex-wrap: wrap;
+  font-size: 20px;
+} */
+
+p {
+  width: 95%;
+  flex-wrap: wrap;
+  font-size: 20px;
+}

@@ -105,7 +105,7 @@ export class SignupComponent {
 
     console.log(this.form);
 
-    const myUser : User = {
+    const newUser : User = {
       userId: null,
       email: this.form.value.email!,
       password: this.form.value.passwords?.password!,
@@ -117,30 +117,23 @@ export class SignupComponent {
 
     // this.userService.createUser(user).subscribe().;
 
-    console.log('**************1***********');
+    // todo: check
 
-    const subscription = this.userService.createUser(myUser).subscribe({
+    const subscription = this.userService.createUser(newUser).subscribe({
       next: (user : User) => {
-        console.log('************2************')
-        console.log(user.userId);
-        console.log(user.name);
-        console.log('*************3***********')
+        console.log('Created user:')
+        console.log(user);
         this.user.set(user);
       },
       error: (error: Error) => {
         this.error.set(error.message);
+        alert(this.error());
       }
     });
 
-    console.log('*************4************');
+    this.destroyRef.onDestroy(() => subscription.unsubscribe());
 
-    this.destroyRef.onDestroy(() => {
-      subscription.unsubscribe();
-    });
-
-    console.log('*************5************');
-
-    this.router.navigate(['']);
+    this.router.navigate(['signin']);
   }
 
   onReset() {

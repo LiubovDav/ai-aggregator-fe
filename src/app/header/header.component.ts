@@ -16,7 +16,11 @@ export class HeaderComponent {
 
   // userName = localStorage.getItem("USER_NAME");
 
-  logout() {
-    this.authService.logout();
+  signin() {
+    this.authService.signin();
+  }
+
+  signout() {
+    this.authService.signout();
   }
 }

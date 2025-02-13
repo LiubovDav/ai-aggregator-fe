@@ -79,32 +79,19 @@ export class SigninComponent {
 
     const subscription = this.userService.validate(this.form.value.email!, this.form.value.password!).subscribe({
       next: (user : User) => {
-        console.log('************************')
-        console.log(user.userId);
-        console.log(user.name);
-        console.log('************************')
+        console.log("Validated user:");
+        console.log(user);
         this.user.set(user);
       },
       error: (error: Error) => {
         this.error.set(error.message);
+        alert(this.error());
       }
     });
 
-    this.destroyRef.onDestroy(() => {
-      subscription.unsubscribe();
-    });
+    this.destroyRef.onDestroy(() => subscription.unsubscribe());
 
-    const user = this.user();
-    if (user == null) {
-      console.log('INVALID FORM');
-      return;
-    }
-
-    if (user.userId) {
-      localStorage.setItem("USER_ID", user.userId.toString());
-      localStorage.setItem("USER_EMAIL", user.email);
-      localStorage.setItem("USER_NAME", user.name);
-    }
+    // todo: save the user in localStorage
 
     this.router.navigate(['chat-model']);
   }

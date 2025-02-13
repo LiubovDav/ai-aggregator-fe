@@ -15,18 +15,12 @@ export class AuthService {
 
   constructor(private router: Router) {}
 
-  logout() {
-    // console.log(localStorage.getItem("USER_ID"));
-    // console.log(localStorage.getItem("USER_EMAIL"));
-    // console.log(localStorage.getItem("USER_NAME"));
+  signin() {
+    this.router.navigate(['signin']);
+  }
 
-    localStorage.removeItem("USER_ID");
-    localStorage.removeItem("USER_EMAIL");
-    localStorage.removeItem("USER_NAME");
-
-    // console.log(localStorage.getItem("USER_ID"));
-    // console.log(localStorage.getItem("USER_EMAIL"));
-    // console.log(localStorage.getItem("USER_NAME"));
+  signout() {
+    localStorage.clear();
 
     this.router.navigate(['']);
   }

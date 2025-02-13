@@ -7,10 +7,15 @@ import { UserCreateComponent } from './user-create/user-create.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { SigninComponent } from './signin/signin.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 export const routes: Routes = [
   {
     path: '',
+    component: WelcomeComponent
+  },
+  {
+    path: 'signin',
     component: SigninComponent
   },
   {
@@ -21,18 +26,18 @@ export const routes: Routes = [
     path: 'chat-model',
     component: ChatModelComponent
   },
-  {
-    path: 'image-model',
-    component: ImageModelComponent
-  },
-  {
-    path: 'user-list',
-    component: UserListComponent
-  },
-  {
-    path: 'user-create',
-    component: UserCreateComponent
-  },
+  // {
+  //   path: 'image-model',
+  //   component: ImageModelComponent
+  // },
+  // {
+  //   path: 'user-list',
+  //   component: UserListComponent
+  // },
+  // {
+  //   path: 'user-create',
+  //   component: UserCreateComponent
+  // },
   {
     path: 'profile',
     component: ProfileComponent

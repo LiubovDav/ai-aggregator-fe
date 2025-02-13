@@ -26,8 +26,6 @@ export class UserListComponent implements OnInit {
       }
     });
 
-    this.destroyRef.onDestroy(() => {
-      subscription.unsubscribe();
-    });
+    this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
 }
