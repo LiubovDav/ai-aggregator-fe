@@ -18,8 +18,9 @@
   @for (interchange of interchanges(); track interchange) {
     <div class="item">
       <mat-form-field class="example-full-width">
-        <textarea matInput>{{ interchange.chatRequest.text! }}</textarea>
-      </mat-form-field>
+        <textarea matInput>{{ interchange.chatRequest.text }}</textarea>
+      </mat-form-field><br />
+      Temperature: {{ interchange.chatRequest.temperature }}
     </div>
     <div class="item">
       <mat-form-field class="example-full-width">
@@ -45,16 +46,17 @@
 
   <div class="container">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      Temperature:
-      <mat-slider min="0" max="1" step="0.1" showTickMarks discrete >
-        <input matSliderThumb formControlName="temperature">
-      </mat-slider><br />
       <mat-form-field class="example-full-width">
         <mat-label>Type a message</mat-label>
         <!-- <textarea matInput placeholder="Ex. Generate the names of 5 most famous pirates."></textarea> -->
         <textarea matInput formControlName="text"></textarea>
       </mat-form-field>
       <br />
+      Temperature:
+      <mat-slider min="0" max="1" step="0.1" showTickMarks discrete >
+        <input matSliderThumb formControlName="temperature">
+      </mat-slider>
+      <br /><br />
       &nbsp;&nbsp;&nbsp;<button mat-flat-button type="submit">Send</button>
     </form>
   </div>
@@ -66,6 +68,8 @@
 
 <div class="container">
   <div class="item">
+    <br />
+    <br />
     <br />
     <br />
     <button mat-flat-button type="button" (click)="startNewDialog()">Start new dialog</button>

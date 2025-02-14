@@ -13,9 +13,10 @@ export class ChatInterchangeService {
 
   private httpClient = inject(HttpClient);
 
-  send(chatDialogId: number, text?: string): Observable<ChatResponse> {
+  send(chatDialogId: number, temperature: number, text: string): Observable<ChatResponse> {
     return this.httpClient.post<ChatResponse>(this.apiUrl, {
       chatDialogId: chatDialogId,
+      temperature: temperature,
       text: text
     });
   }

@@ -36,7 +36,7 @@ export class ChatModelComponent {
       text: this.form.value.text!
     };
 
-    this.chatInterchangeService.send(chatRequest.chatDialogId!, chatRequest.text!).subscribe({
+    this.chatInterchangeService.send(chatRequest.chatDialogId, chatRequest.temperature, chatRequest.text).subscribe({
       next: (response : ChatResponse) => {
         const chatInterchange: ChatInterchange = {
           chatRequest: chatRequest,
