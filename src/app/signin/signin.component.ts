@@ -66,7 +66,9 @@ export class SigninComponent {
   }
 
   onSignUp() {
-    this.router.navigate(['signup']);
+    this.router.navigate(['signup']).then(() => {
+      window.location.reload();
+    });
   }
 
   onSubmit() {
@@ -91,8 +93,12 @@ export class SigninComponent {
 
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
 
-    // todo: save the user in localStorage
+    // todo: save real user name/email in localStorage
+    localStorage.setItem("userName", "Alex");
+    localStorage.setItem("userEmail", "alex@gmail.com");
 
-    this.router.navigate(['chat-model']);
+    this.router.navigate(['chat-model']).then(() => {
+      window.location.reload();
+    });
   }
 }

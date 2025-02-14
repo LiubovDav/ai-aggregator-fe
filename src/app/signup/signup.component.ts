@@ -133,7 +133,9 @@ export class SignupComponent {
 
     this.destroyRef.onDestroy(() => subscription.unsubscribe());
 
-    this.router.navigate(['signin']);
+    this.router.navigate(['signin']).then(() => {
+      window.location.reload();
+    });
   }
 
   onReset() {

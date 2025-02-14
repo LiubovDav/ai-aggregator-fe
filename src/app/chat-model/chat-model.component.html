@@ -7,11 +7,6 @@
     <mat-checkbox class="example-margin" checked="true"></mat-checkbox>Gemini<br />
     <mat-checkbox class="example-margin" checked="true"></mat-checkbox>Mistral<br />
     <mat-checkbox class="example-margin" checked="true"></mat-checkbox>Anthropic<br />
-    <br />
-    Temperature:
-    <mat-slider min="0" max="1" step="0.1" showTickMarks discrete >
-      <input matSliderThumb formControlName="temperature">
-    </mat-slider>
   </div>
   <div class="item"><h3>ChatGPT</h3></div>
   <div class="item"><h3>Gemini</h3></div>
@@ -50,6 +45,10 @@
 
   <div class="container">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      Temperature:
+      <mat-slider min="0" max="1" step="0.1" showTickMarks discrete >
+        <input matSliderThumb formControlName="temperature">
+      </mat-slider><br />
       <mat-form-field class="example-full-width">
         <mat-label>Type a message</mat-label>
         <!-- <textarea matInput placeholder="Ex. Generate the names of 5 most famous pirates."></textarea> -->

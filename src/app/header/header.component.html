@@ -6,7 +6,7 @@
     <span><a href="">AI Aggregator</a></span>
 
     <span class="example-spacer"></span>
-    <a mat-stroked-button href="chat-model">Chat model</a>
+    <a mat-stroked-button href="chat-model" [hidden]="chatModelHidden">Chat model</a>
 
     <!-- <span class="example-spacer"></span>
     <a mat-stroked-button href="image-model">Image model</a> -->
@@ -102,12 +102,15 @@
     <span class="example-spacer"></span>
 
     <span class="example-spacer"></span>
-    <a mat-stroked-button href="profile">Profile</a>
+    <a mat-stroked-button href="profile" [hidden]="profileHidden">Profile</a>
+
+    <span class="example-spacer" [hidden]="signInHidden"></span>
+    <a mat-stroked-button (click)="signIn()" [hidden]="signInHidden">Sign In</a>
+
+    <span class="example-spacer" [hidden]="signUpHidden"></span>
+    <a mat-stroked-button (click)="signUp()" [hidden]="signUpHidden">Sign Up</a>
 
     <span class="example-spacer"></span>
-    <a mat-stroked-button (click)="signin()">Sign In</a>
-
-    <span class="example-spacer"></span>
-    <a mat-stroked-button (click)="signout()">Sign Out</a>
+    <a mat-stroked-button (click)="signOut()" [hidden]="signOutHidden">Sign Out</a>
   </mat-toolbar>
 </header>

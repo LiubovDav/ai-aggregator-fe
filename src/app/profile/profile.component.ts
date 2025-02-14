@@ -10,15 +10,8 @@ import { User } from '../models/user.model';
 })
 export class ProfileComponent {
 
-  user = signal<User>({
-    userId: 1,
-    email: "john@gmail.com",
-    password: "111111",
-    confirmPassword: "111111",
-    name: "John",
-    createdOn: "",
-    updatedOn: ""
-  });
+  userName = localStorage.getItem('userName');
+  userEmail = localStorage.getItem('userEmail');
 
   updatePassword() {
     // todo

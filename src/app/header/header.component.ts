@@ -14,13 +14,21 @@ export class HeaderComponent {
 
   private authService = inject(AuthService);
 
-  // userName = localStorage.getItem("USER_NAME");
+  chatModelHidden: any = localStorage.getItem("userName") == null;
+  profileHidden: any = localStorage.getItem("userName") == null;
+  signInHidden: any = localStorage.getItem("userName") != null;
+  signUpHidden: any = localStorage.getItem("userName") != null;
+  signOutHidden: any = localStorage.getItem("userName") == null;
 
-  signin() {
-    this.authService.signin();
+  signIn() {
+    this.authService.signIn();
   }
 
-  signout() {
-    this.authService.signout();
+  signUp() {
+    this.authService.signUp();
+  }
+
+  signOut() {
+    this.authService.signOut();
   }
 }

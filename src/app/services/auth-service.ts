@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  // todo: use the example
+// todo: use the example
 // // Create item:
 // let myObj = { name: 'Nixon', profession: 'Developer' };
 // localStorage.setItem(key, JSON.stringify(myObj));
@@ -15,13 +15,23 @@ export class AuthService {
 
   constructor(private router: Router) {}
 
-  signin() {
-    this.router.navigate(['signin']);
+  signIn() {
+    this.router.navigate(['signin']).then(() => {
+      window.location.reload();
+    });
   }
 
-  signout() {
+  signUp() {
+    this.router.navigate(['signup']).then(() => {
+      window.location.reload();
+    });
+  }
+
+  signOut() {
     localStorage.clear();
 
-    this.router.navigate(['']);
+    this.router.navigate(['']).then(() => {
+      window.location.reload();
+    });
   }
 }
